@@ -2,15 +2,18 @@
 
 This exercise was done to follow along with the Jane Street tech talk at https://www.youtube.com/watch?v=h_e5pPKI0K4 
 
-# Working
+# Steps
+## Getting build set-up
 ```
 Robs-MacBook-Pro:template robunderwood$ jbuilder build {main.bc.js,index.html,style.css}
 Robs-MacBook-Pro:template robunderwood$
 ```
 
-# Steps
+
 ## Step 2 -- Adding random number list to model
-![Image of Random Number Tables](images/step2-adding-random-numbers.png)
+
+![Image of Random Number Tables](images/step2-adding-randoms-numbers.png)
+
 * Note: Same exactly list of random numbers as were generated in the demo
 
 # Problems encountered
@@ -49,6 +52,18 @@ Solution: Add `js_of_ocaml-ppx` to jbuild file
 
 ## Related: Merlin doesn't "like" the "##" 
 See PPX section of this [merlin config file doc](https://github.com/ocaml/merlin/wiki/project-configuration)
+Note: Seems like updating jbuild file resolved 
+
+## Compliation errors assocated with `Error err -> (Async_js.log_s ... ` line
+Supposed to be:
+```Error err -> Async_js.log_s [%message "Failed to parse row num from url" ~_:(err:Error.t)];
+None```
+
+
+
+Solution: Added parens around expression starting with `Async`:
+```Error err -> (Async_js.log_s [%message "Failed to parse row num from url" ~_:(err:Error.t)]);
+None```
 
 
 
