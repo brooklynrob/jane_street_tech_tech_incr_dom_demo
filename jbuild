@@ -1,0 +1,8 @@
+(jbuild_version 1)
+
+(executables
+ ((names (main))
+  (libraries
+   (core_kernel async_kernel incr_dom))
+  (preprocess (pps (ppx_jane js_of_ocaml-ppx)))
+  ))
